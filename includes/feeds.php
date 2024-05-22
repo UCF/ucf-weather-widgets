@@ -11,6 +11,8 @@
  * @return object|null The returned object from the API or null
  */
 function ucf_weather_widgets_get_data( $latitude, $longitude ) {
+	$defaults = UCF_Weather_Widgets_Config::$default_options;
+
 	if ( !$latitude || !$longitude ) return null;
 
 	$args = array(
@@ -18,12 +20,12 @@ function ucf_weather_widgets_get_data( $latitude, $longitude ) {
 		'format'   => 'json',
 		'language' => 'en-US',
 		'units'    => 'e',
-		'apiKey'   => 'we-need-to-configure-an-api-key-here-somehow'
+		'apiKey'   => get_option( 'ucf_weather_widgets_weatherstem_base_url', $defaults['ucf_weather_widgets_weatherstem_base_url'] )
 	);
 
 	$arg_string = http_build_query( $args );
 
-	$base_url = 'https://data.weatherstem.com/v3/wx/observations/current';
+	$base_url = get_option( 'ucf_weather_widgets_weatherstem_api_key', $defaults['ucf_weather_widgets_weatherstem_api_key'] );
 
 	$request_url = "$base_url?$arg_string";
 

@@ -17,9 +17,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-include_once 'includes/feeds.php';
-include_once 'includes/common.php';
-include_once 'includes/config.php';
+define( 'UCF_WEATHER_WIDGETS__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'UCF_WEATHER_WIDGETS__PLUGIN_FILE', __FILE__ );
+
+include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/config.php';
+include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/feeds.php';
+include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/common.php';
+
+if ( ! function_exists( 'ucf_weather_widgets_activate' ) ) {
+	function ucf_weather_widgets_activate() {
+		UCF_Weather_Widgets_Config::add_options();
+	}
+
+	register_activation_hook( UCF_WEATHER_WIDGETS__PLUGIN_FILE, 'ucf_weather_widgets_activate' );
+}
+
+if ( ! function_exists( 'ucf_weather_widgets_deactivate' ) ) {
+	function ucf_weather_widgets_deactivate() {
+		UCF_Weather_Widgets_Config::delete_options();
+	}
+
+	register_deactivation_hook( UCF_WEATHER_WIDGETS__PLUGIN_FILE, 'ucf_weather_widgets_deactivate' );
+}
+
+add_action( 'plugins_loaded', function() {
+	add_action( 'admin_menu', array( 'UCF_Weather_Widgets_Config', 'add_options_page' ) );
+} );
 
 /**
  * Registers the block using the metadata loaded from the `block.json` file.
