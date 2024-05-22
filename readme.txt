@@ -1,4 +1,4 @@
-=== Ucf Weather Widgets ===
+=== UCF Weather Widgets ===
 Contributors:      The WordPress Contributors
 Tags:              block
 Tested up to:      6.1
