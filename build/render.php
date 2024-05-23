@@ -5,6 +5,7 @@
 
 $longitude = $attributes['longitude'] ?? null;
 $latitude = $attributes['latitude'] ?? null;
+$layout = $attributes['layout'] ?? 'full';
 
 $data = null;
 
@@ -15,7 +16,7 @@ if ( $longitude && $latitude ) {
 ?>
 <?php if ( $data ) : ?>
 <div <?php echo get_block_wrapper_attributes(); ?>>
-	<?php echo ucf_weather_widgets_common( $data ); ?>
+	<?php echo ucf_weather_widgets_display_widget( $data, $layout ); ?>
 </div>
 <?php else: ?>
 <p <?php echo get_block_wrapper_attributes(); ?>>

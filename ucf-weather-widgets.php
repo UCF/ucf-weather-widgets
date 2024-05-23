@@ -22,7 +22,9 @@ define( 'UCF_WEATHER_WIDGETS__PLUGIN_FILE', __FILE__ );
 
 include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/config.php';
 include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/feeds.php';
+include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/layouts.php';
 include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/common.php';
+include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/shortcodes.php';
 
 if ( ! function_exists( 'ucf_weather_widgets_activate' ) ) {
 	function ucf_weather_widgets_activate() {
