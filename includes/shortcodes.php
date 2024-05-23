@@ -17,7 +17,7 @@ if ( ! function_exists( 'sc_ucf_weather_widget' ) && ! function_exists( 'ucf_wea
 			'layout'    => 'full'
 		), $atts );
 
-		$data = ucf_weather_widgets_get_data( $args['longitude'], $args['latitude'] );
+		$data = ucf_weather_widgets_get_data( $args['latitude'], $args['longitude'] );
 
 		return ucf_weather_widgets_display_widget( $data, $args['layout'] );
 	}
