@@ -8,19 +8,6 @@
  * @param object $data The data from the API
  * @return string
  */
-function ucf_weather_widgets_common( $data ) {
-	$icon_code = $data->iconCode;
-	$phrase    = $data->wxPhraseLong;
-	$high      = $data->temperatureMax24Hour;
-	$low       = $data->temperatureMin24Hour;
-
-	ob_start();
-?>
-	<div class="weather-info">
-		<i class="wi wi-yahoo-<?php echo $icon_code; ?>"></i> <?php echo $phrase; ?>
-		<p>High: <?php echo $high; ?></p>
-		<p>Low: <?php echo $low; ?></p>
-	</div>
-<?php
-	return ob_get_clean();
+function ucf_weather_widgets_display_widget( $data, $layout = 'full' ) {
+	return apply_filters( "ucf_weather_widgets_display_$layout", $data );
 }

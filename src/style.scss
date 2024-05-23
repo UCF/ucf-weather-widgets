@@ -4,8 +4,82 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-ucf-ucf-weather-widgets {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.weather-info-full {
+	padding: 1.25rem 0.75rem;
+
+	.temperature {
+		font-size: 2.9rem;
+	}
+
+	.icon {
+		color: #ffcc00;
+		font-size: 2.4rem;
+	}
+
+	.description {
+		display: block;
+	}
+
+	.high,
+	.low,
+	.separator {
+		font-size: 1.5rem;
+	}
+
+	.separator {
+		font-weight: 100;
+	}
+
+	.high {
+		color: #ad8b00;
+	}
+
+	.low {
+		color: #0056a2;
+	}
+}
+
+.weather-info-ribbon {
+	padding: 1.25rem 0.75rem;
+
+	.temperature {
+		font-size: 2.9rem;
+	}
+
+	.icon {
+		color: #ffcc00;
+		font-size: 2.4rem;
+		padding-right: 1rem;
+	}
+
+	.high,
+	.low,
+	.separator {
+		font-size: 2.5rem;
+	}
+
+	.separator {
+		font-weight: 100;
+	}
+
+	.high {
+		color: #ad8b00;
+	}
+
+	.low {
+		color: #0056a2;
+	}
+}
+
+.weather-info-compact {
+	padding: 1.25rem 0.75rem;
+
+	.temperature {
+		font-size: 1.5rem;
+	}
+
+	.icon {
+		color: #ffcc00;
+		font-size: 1.1rem;
+	}
 }

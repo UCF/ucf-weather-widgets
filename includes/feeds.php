@@ -20,12 +20,12 @@ function ucf_weather_widgets_get_data( $latitude, $longitude ) {
 		'format'   => 'json',
 		'language' => 'en-US',
 		'units'    => 'e',
-		'apiKey'   => get_option( 'ucf_weather_widgets_weatherstem_base_url', $defaults['ucf_weather_widgets_weatherstem_base_url'] )
+		'apiKey'   => get_option( 'ucf_weather_widgets_weatherstem_api_key', $defaults['ucf_weather_widgets_weatherstem_api_key'] )
 	);
 
 	$arg_string = http_build_query( $args );
 
-	$base_url = get_option( 'ucf_weather_widgets_weatherstem_api_key', $defaults['ucf_weather_widgets_weatherstem_api_key'] );
+	$base_url = get_option( 'ucf_weather_widgets_weatherstem_base_url', $defaults['ucf_weather_widgets_weatherstem_base_url'] );
 
 	$request_url = "$base_url?$arg_string";
 
