@@ -45,16 +45,16 @@ export default function Edit( { attributes, setAttributes }) {
 						title={ __( 'Map Widget Settings', 'ucf-weather-widgets' ) }
 						icon='admin-plugins'>
 						<TextControl
-							label={ __( 'Longitude', 'ucf-weather-widgets' ) }
-							help={ __( 'The longitude of the area to display weather for.' ) }
-							onChange={ (longitude) => setAttributes( { longitude } ) }
-							value={ longitude }
-						/>
-						<TextControl
 							label={ __( 'Latitude', 'ucf-weather-widgets' ) }
 							help={ __( 'The latitude of the area to display weather for.' ) }
 							onChange={ (latitude) => setAttributes( { latitude } ) }
 							value={ latitude }
+						/>
+						<TextControl
+							label={ __( 'Longitude', 'ucf-weather-widgets' ) }
+							help={ __( 'The longitude of the area to display weather for.' ) }
+							onChange={ (longitude) => setAttributes( { longitude } ) }
+							value={ longitude }
 						/>
 						<SelectControl
 							label={ __( 'Layout', 'ucf-weather-widgets' ) }
@@ -82,8 +82,8 @@ export default function Edit( { attributes, setAttributes }) {
 				</Panel>
 			</InspectorControls>,
 			<div { ...useBlockProps() }>
-				<p>Longitude: { longitude }</p>
 				<p>Latitude: { latitude }</p>
+				<p>Longitude: { longitude }</p>
 				<p>Layout: { layout }</p>
 			</div>
 		</>

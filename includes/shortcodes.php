@@ -12,8 +12,8 @@ if ( ! function_exists( 'sc_ucf_weather_widget' ) && ! function_exists( 'ucf_wea
 	 */
 	function sc_ucf_weather_widget( $atts, $content = '' ) {
 		$args = shortcode_atts(array(
-			'longitude' => null,
 			'latitude'  => null,
+			'longitude' => null,
 			'layout'    => 'full'
 		), $atts );
 
