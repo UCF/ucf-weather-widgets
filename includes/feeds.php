@@ -32,7 +32,7 @@ function ucf_weather_widgets_get_data( $latitude, $longitude ) {
 
 	$request_url = "$base_url?$arg_string";
 
-	$transient_key = md5( $request_url );
+	$transient_key = 'ucf_weather_' . md5( $request_url );
 
 	$weather_data = get_transient( $transient_key );
 
