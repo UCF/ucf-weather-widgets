@@ -5,10 +5,10 @@
  */
 
 if ( ! function_exists( 'ucf_weather_widgets_display_full' ) ) {
-	function ucf_weather_widgets_display_full( $data, $location = null ) {
+	function ucf_weather_widgets_display_full( $data ) {
 		// Icon Data
 		$icon_code  = $data->iconCode;
-		$phrase     = $data->wxPhraseLong;
+		$phrase     = $data->wxPhraseShort;
 
 		// Current conditions data
 		$temp       = $data->temperature;
@@ -20,24 +20,19 @@ if ( ! function_exists( 'ucf_weather_widgets_display_full' ) ) {
 		$humidity = $data->relativeHumidity;
 
 		// Wind Information
+		$wind_speed = $data->windSpeed;
 		$wind_direction = $data->windDirectionCardinal;
-		$wind_speed     = $data->windSpeed;
+		$direction_text = ucf_weather_cardinal_direction( $wind_direction );
 
 		ob_start();
 	?>
 		<div class="weather-info weather-info-full">
 			<div class="icon-space">
-				<?php if ( $location ) : ?>
-				<span class="location"><?php echo $location; ?></span>
-				<?php endif; ?>
 				<span class="icon"><i class="wi wi-yahoo-<?php echo $icon_code; ?>"></i></span>
 				<span class="description"><?php echo $phrase; ?></span>
-				<dl class="icon-list">
-					<dt><i class="wi wi-strong-wind"></i> <span class="sr-only">Wind Speed</span></dt>
-					<dd><?php echo $wind_speed; ?> mph</dd>
-					<dt><i class="wi wi-wind wi-from-<?php echo strtolower( $wind_direction ); ?>"></i> <span class="sr-only">Wind Direction</span></dt>
-					<dd><?php echo $wind_direction; ?></dd>
-				</dl>
+				<span class="wind">
+					<i class="wi wi-strong-wind"></i><?php echo $wind_speed; ?> mph
+				</span>
 			</div>
 			<div class="conditions">
 				<div class="temperature"><?php echo $temp; ?>&deg;</div>
@@ -51,12 +46,6 @@ if ( ! function_exists( 'ucf_weather_widgets_display_full' ) ) {
 					</dt>
 					<dd>Humidity</dd>
 					<dt><?php echo $humidity; ?>%</dt>
-					<dd>Wind Direction</dd>
-					<dt>
-						<i class="wi wi-wind wi-from-<?php echo strtolower( $wind_direction ); ?>"></i> <?php echo $wind_direction; ?>
-					</dt>
-					<dd>Wind Speed</dd>
-					<dt><?php echo $wind_speed; ?> mph</dt>
 				</dl>
 			</div>
 		</div>

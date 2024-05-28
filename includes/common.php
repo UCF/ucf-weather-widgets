@@ -11,3 +11,11 @@
 function ucf_weather_widgets_display_widget( $data, $layout = 'full' ) {
 	return apply_filters( "ucf_weather_widgets_display_$layout", $data );
 }
+
+function ucf_weather_cardinal_direction( $direction ) {
+	return str_replace(
+		array('N', 'E', 'S', 'W'),
+		array( 'North', 'East', 'South', 'West' ),
+		$direction
+	);
+}
