@@ -21,8 +21,6 @@ if ( ! function_exists( 'ucf_weather_widgets_display_full' ) ) {
 
 		// Wind Information
 		$wind_speed = $data->windSpeed;
-		$wind_direction = $data->windDirectionCardinal;
-		$direction_text = ucf_weather_cardinal_direction( $wind_direction );
 
 		ob_start();
 	?>
