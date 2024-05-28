@@ -13,6 +13,9 @@
 function ucf_weather_widgets_get_data( $latitude, $longitude ) {
 	$defaults = UCF_Weather_Widgets_Config::$default_options;
 
+	// Get the transient expiration
+	$expiration = get_option( 'ucf_weather_widgets_cache_expiration', $defaults['ucf_weather_widgets_cache_expiration'] );
+
 	if ( !$latitude || !$longitude ) return null;
 
 	$args = array(
@@ -29,18 +32,28 @@ function ucf_weather_widgets_get_data( $latitude, $longitude ) {
 
 	$request_url = "$base_url?$arg_string";
 
-	$response = wp_remote_get(
-		$request_url,
-		array(
-			'timeout' => 5
-		)
-	);
+	$transient_key = 'ucf_weather_' . md5( $request_url );
 
-	if ( is_array( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
-		$result = json_decode( wp_remote_retrieve_body( $response ) );
-	} else {
-		$result = null;
+	$weather_data = get_transient( $transient_key );
+
+	if ( ! $weather_data ) {
+		$response = wp_remote_get(
+			$request_url,
+			array(
+				'timeout' => 5
+			)
+		);
+
+		if ( is_array( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
+			$weather_data = json_decode( wp_remote_retrieve_body( $response ) );
+		} else {
+			// There was a problem retrieving the weather data
+			// Return null and don't store anything as a transient
+			return null;
+		}
+
+		set_transient( $transient_key, $weather_data, $expiration );
 	}
 
-	return $result;
+	return $weather_data;
 }
