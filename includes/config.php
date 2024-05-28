@@ -24,7 +24,8 @@ if ( ! class_exists( 'UCF_Weather_Widgets_Config' ) ) {
 		public static
 			$default_options = array(
 				'ucf_weather_widgets_weatherstem_base_url' => 'https://data.weatherstem.com/v3/wx/observations/current',
-				'ucf_weather_widgets_weatherstem_api_key'  => ''
+				'ucf_weather_widgets_weatherstem_api_key'  => '',
+				'ucf_weather_widgets_cache_expiration'     => 300
 			);
 
 		/**
@@ -35,8 +36,9 @@ if ( ! class_exists( 'UCF_Weather_Widgets_Config' ) ) {
 		public static function add_options() {
 			$defaults = self::$default_options;
 
-			add_option( 'ucf_weather_widgets_weatherstem_base_url', $defaults['weatherstem_base_url'] );
-			add_option( 'ucf_weather_widgets_weatherstem_api_key', $defaults['weatherstem_api_key'] );
+			add_option( 'ucf_weather_widgets_weatherstem_base_url', $defaults['ucf_weather_widgets_weatherstem_base_url'] );
+			add_option( 'ucf_weather_widgets_weatherstem_api_key', $defaults['ucf_weather_widgets_weatherstem_api_key'] );
+			add_option( 'ucf_weather_widgets_cache_expiration', $defaults['ucf_weather_widgets_cache_expiration'] );
 		}
 
 		/**
@@ -47,6 +49,7 @@ if ( ! class_exists( 'UCF_Weather_Widgets_Config' ) ) {
 		public static function delete_options() {
 			delete_option( 'ucf_weather_widgets_weatherstem_base_url' );
 			delete_option( 'ucf_weather_widgets_weatherstem_api_key' );
+			delete_option( 'ucf_weather_widgets_cache_expiration' );
 		}
 
 		/**
@@ -77,6 +80,7 @@ if ( ! class_exists( 'UCF_Weather_Widgets_Config' ) ) {
 		public static function register_settings() {
 			register_setting( 'ucf-weather-widgets-group', 'ucf_weather_widgets_weatherstem_base_url' );
 			register_setting( 'ucf-weather-widgets-group', 'ucf_weather_widgets_weatherstem_api_key' );
+			register_setting( 'ucf-weather-widgets-group', 'ucf_weather_widgets_cache_expiration' );
 		}
 
 		/**
@@ -88,6 +92,7 @@ if ( ! class_exists( 'UCF_Weather_Widgets_Config' ) ) {
 			$defaults = self::$default_options;
 			$ucf_weather_widgets_weatherstem_base_url = get_option( 'ucf_weather_widgets_weatherstem_base_url', $defaults['ucf_weather_widgets_weatherstem_base_url'] );
 			$ucf_weather_widgets_weatherstem_api_key = get_option( 'ucf_weather_widgets_weatherstem_api_key', $defaults['ucf_weather_widgets_weatherstem_api_key'] );
+			$ucf_weather_widgets_cache_expiration = get_option( 'ucf_weather_widgets_cache_expiration', $defaults['ucf_weather_widgets_cache_expiration'] );
 
 ?>
 			<div class="wrap">
@@ -103,6 +108,10 @@ if ( ! class_exists( 'UCF_Weather_Widgets_Config' ) ) {
 						<tr valign="top">
 							<th scope="row">Weatherstem API Key</th>
 							<td><input class="large-text" type="text" name="ucf_weather_widgets_weatherstem_api_key" value="<?php echo esc_attr( $ucf_weather_widgets_weatherstem_api_key ); ?>"></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row">Feed Cache Expiration (In Seconds)</th>
+							<td><input class="large-text" type="number" name="ucf_weather_widgets_cache_expiration" value="<?php echo esc_attr( $ucf_weather_widgets_cache_expiration );?>"></td>
 						</tr>
 					</table>
 					<?php submit_button(); ?>
