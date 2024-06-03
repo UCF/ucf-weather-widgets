@@ -8,7 +8,7 @@ if ( ! function_exists( 'ucf_weather_widgets_display_full' ) ) {
 	function ucf_weather_widgets_display_full( $data ) {
 		// Icon Data
 		$icon_code  = $data->iconCode;
-		$phrase     = $data->wxPhraseShort;
+		$phrase     = $data->wxPhraseLong;
 
 		// Current conditions data
 		$temp       = $data->temperature;
