@@ -12,11 +12,14 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start --webpack-copy-php"
+		"start": "wp-scripts start --webpack-copy-php",
+		"readme": "wp-readme-to-md"
 	},
 	"devDependencies": {
 		"@wordpress/components": "^27.6.0",
 		"@wordpress/scripts": "^27.9.0",
-		"weather-icons": "^1.3.2"
+		"@wpsh/to-wp-txt": "^0.1.1",
+		"weather-icons": "^1.3.2",
+		"wp-readme-to-markdown": "^1.0.1"
 	}
 }
