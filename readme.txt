@@ -1,29 +1,42 @@
 === UCF Weather Widgets ===
-Contributors:      The WordPress Contributors
+Contributors:      webcom
 Tags:              block
 Tested up to:      6.1
 Stable tag:        0.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Example block scaffolded with Create Block tool.
+Provides a weather widget with three included styles for displaying the current weather conditions.
 
 == Description ==
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
+Provides a weather block and shortcode for displaying current weather conditions. Both the block and shortcode support three styles out of the box:
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+1. Full: This style will provide a weather icon, currently temperature, wind speed, the forecasted high and low for the day and current humidity.
+2. Ribbon: (Under construction) This style will provide a weather icon, current temperature and the forecasted high and low.
+3. Compact: (Under construction) This still provides a weather icon and the current temperature.
+
+== Examples ==
+
+The following examples use the shortcode markup, but the same parameters could be passed to the block to achieve the same outcome.
+
+The following provides a full weather widget for the main UCF campus.
+
+```
+[ucf-weather latitude="28.602268" longitude="-81.200142" layout="full"]
+```
+
+The following provides a compact widget for UCF Downtown.
+
+```
+[ucf-weather latitude="28.5465336" longitude="-81.38887," layout="compact"]
+```
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
 1. Upload the plugin files to the `/wp-content/plugins/ucf-weather-widgets` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. Add the API key for Weatherstem to the Settings > UCF Weather Widgets page.
 
 == Frequently Asked Questions ==
 
