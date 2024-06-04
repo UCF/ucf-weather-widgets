@@ -1,0 +1,8 @@
+{
+    "name": "ucf/ucf-weather-widgets",
+    "description": "Provides a weather widget with three included styles for displaying the current weather conditions.",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
