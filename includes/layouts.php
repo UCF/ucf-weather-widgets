@@ -6,24 +6,45 @@
 
 if ( ! function_exists( 'ucf_weather_widgets_display_full' ) ) {
 	function ucf_weather_widgets_display_full( $data ) {
-		$icon_code = $data->iconCode;
-		$phrase    = $data->wxPhraseLong;
-		$temp      = $data->temperature;
-		$high      = $data->temperatureMax24Hour;
-		$low       = $data->temperatureMin24Hour;
+		// Icon Data
+		$icon_code  = $data->iconCode;
+		$phrase     = $data->wxPhraseLong;
+
+		// Current conditions data
+		$temp       = $data->temperature;
+		$feels_like = $data->temperatureFeelsLike;
+
+		// Additional data
+		$high     = $data->temperatureMax24Hour;
+		$low      = $data->temperatureMin24Hour;
+		$humidity = $data->relativeHumidity;
+
+		// Wind Information
+		$wind_speed = $data->windSpeed;
 
 		ob_start();
 	?>
 		<div class="weather-info weather-info-full">
-			<div class="current-conditions">
-				<span class="temperature"><?php echo $temp; ?>&deg;</span>
+			<div class="icon-space">
 				<span class="icon"><i class="wi wi-yahoo-<?php echo $icon_code; ?>"></i></span>
 				<span class="description"><?php echo $phrase; ?></span>
+				<span class="wind">
+					<i class="wi wi-strong-wind"></i><?php echo $wind_speed; ?> mph
+				</span>
 			</div>
-			<div class="forecast">
-				<span class="high"><?php echo $high; ?>&deg;</span>
-				<span class="separator">|</span>
-				<span class="low"><?php echo $low; ?>&deg;</span>
+			<div class="conditions">
+				<div class="temperature"><?php echo $temp; ?>&deg;</div>
+				<div class="feels-like">Feels like <span class="feels-like-temp"><?php echo $feels_like; ?>&deg;</span></div>
+				<dl class="additional-data">
+					<dd>Hi/Lo</dd>
+					<dt>
+						<span class="high"><?php echo $high; ?>&deg;</span>
+						<span class="separator">|</span>
+						<span class="low"><?php echo $low; ?>&deg;</span>
+					</dt>
+					<dd>Humidity</dd>
+					<dt><?php echo $humidity; ?>%</dt>
+				</dl>
 			</div>
 		</div>
 	<?php
