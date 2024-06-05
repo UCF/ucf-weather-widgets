@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'UCF_WEATHER_WIDGETS__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'UCF_WEATHER_WIDGETS__PLUGIN_FILE', __FILE__ );
+define( 'UCF_WEATHER_WIDGETS__BUILD_URL', plugins_url( 'build', UCF_WEATHER_WIDGETS__PLUGIN_FILE ) );
 
 include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/config.php';
 include_once UCF_WEATHER_WIDGETS__PLUGIN_DIR . 'includes/feeds.php';
