@@ -2,7 +2,7 @@
 **Contributors:** [webcom](https://profiles.wordpress.org/webcom/)  
 **Tags:**              block  
 **Tested up to:**      6.1  
-**Stable tag:**        0.1.0  
+**Stable tag:**        0.2.0  
 **License:**           GPL-2.0-or-later  
 **License URI:**       https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -39,6 +39,10 @@ The following provides a compact widget for UCF Downtown.
 3. Add the API key for Weatherstem to the Settings > UCF Weather Widgets page.
 
 ## Changelog ##
+
+### 0.2.0 ###
+Enhancements:
+* Added setting for enqueuing the stylesheet on sites not using the block editor.
 
 ### 0.1.0 ###
 * Release
