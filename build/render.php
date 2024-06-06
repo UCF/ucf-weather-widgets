@@ -18,8 +18,4 @@ if ( $longitude && $latitude ) {
 <div <?php echo get_block_wrapper_attributes(); ?>>
 	<?php echo ucf_weather_widgets_display_widget( $data, $layout ); ?>
 </div>
-<?php else: ?>
-<p <?php echo get_block_wrapper_attributes(); ?>>
-	Unable to retrieve weather data.
-</p>
 <?php endif; ?>
